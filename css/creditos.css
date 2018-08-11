@@ -1,0 +1,23 @@
+@keyframes subirCreditos{
+	from{
+		top:0%;
+	}
+	to{
+		top:-500%;
+	}
+}
+.creditos{
+	text-align: center;
+	animation: infinite subirCreditos 30s;
+	position: relative;
+	color: #fff;
+}
+.creditos h1{
+	font-size: 70px;
+}
+.creditos p{
+	animation: subirCreditos 20s;
+	margin:100px 0px;
+	position: relative;
+	font-size: 30px;
+}

@@ -1,0 +1,51 @@
+.btn-verde{
+	margin: 10px auto;
+	padding: 10px 40px 10px 40px;
+	color: #fff;
+	border: none;
+	border-bottom: 3px solid #1A893B;
+	background-color:#23BA50; 
+	border-radius: 10px;
+	transition: 0.2s all;
+	cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-verde:active{
+	background-color:#40BCAE; 
+	border-bottom: 3px solid #2D877C;
+}
+.btn-vermelho{
+  margin: 10px auto;
+  padding: 10px 40px 10px 40px;
+  color: #fff;
+  border: none;
+  border-bottom: 3px solid #AF0303;
+  background-color:#DD0404; 
+  border-radius: 10px;
+  transition: 0.2s all;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-vermelho:active{
+  background-color:#40BCAE; 
+  border-bottom: 3px solid #2D877C;
+}
+.btn-amarelo{
+  margin: 10px auto;
+  padding: 10px 40px 10px 40px;
+  color: #fff;
+  border: none;
+  border-bottom: 3px solid #C19E1D;
+  background-color:#F2C524; 
+  border-radius: 10px;
+  transition: 0.2s all;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-amarelo:active{
+  background-color:#40BCAE; 
+  border-bottom: 3px solid #2D877C;
+}

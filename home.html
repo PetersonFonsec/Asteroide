@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>Asteroid</title>
+		<link rel="stylesheet" href="css/Tela.css">
+		<link rel="stylesheet" href="css/elementos.css">
+		<link rel="stylesheet" href="css/Pontuacao.css">
+		<link rel="stylesheet" href="css/Menu.css">
+		<link rel="stylesheet" href="css/btn.css">
+		<link rel="icon" href="img/NaveEspecial/Nave0.png">
+	</head>
+	<body onload="Game_init()">
+  		<source src="mp3/tiro.mp3" type="audio/mpeg" autoplay>
+
+		<div class="tela">
+			<div id="Pontuacao">Pontuação:<span id="contadorMeteoro">0</span></div>
+
+			<center>
+				<div id="Nascimento"></div>
+			</center>		
+			<img class="nave" id="nave" src="img/naveEspecial/Nave0.png" width="60" height="60">
+
+		</div>
+		
+		<script src="lib/jquery.js">     </script>
+	  	<script src="js/Colisao.js">     </script>
+	  	<script src="js/Estrelas.js">    </script>
+	  	<script src="js/GameOver.js">    </script>
+		<script src="js/Meteoros.js">    </script>
+	  	<script src="js/MorteMeteoro.js"></script>
+	  	<script src="js/Nave.js">        </script>
+	  	<script src="js/Planetas.js">    </script>
+		<script src="js/Pontuacao.js">   </script>
+		<script src="js/Teclado.js">     </script>
+	  	<script src="js/Tiro.js">        </script>
+	  	<script src="js/Principal.js">   </script>
+	</body>
+</html>

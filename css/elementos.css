@@ -1,0 +1,17 @@
+.nave {
+	transition: .3s all;
+ 	position: absolute;
+	left: 50%;
+	bottom: 20%;
+}
+.tiro{
+  	position: absolute;
+}
+.meteoro{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+}
+.star , .Planetas{
+	position: absolute;
+}

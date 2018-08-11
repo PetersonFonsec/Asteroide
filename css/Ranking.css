@@ -1,0 +1,29 @@
+.tabela{
+	width: 500px;
+	height: 400px;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 20px 20px 20px 30px;
+	margin: 5% auto;
+	text-align: center;
+}
+.scroll{
+	overflow-y: auto;
+	height: 200px;
+
+}
+.div-voltar{
+	position: relative;
+	bottom: 0%;
+	width: 101%;
+	height: 80px;
+	background-color: #fff;
+	display: flex;
+	align-items:  center;
+	justify-content: center;
+}
+#ListaNome , #ListaPontuacao {
+	padding: 0px;
+	list-style: none;
+	text-align: left;
+}

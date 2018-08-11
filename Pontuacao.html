@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>Asteroid</title>
+		<link rel="stylesheet" href="css/Tela.css">
+		<link rel="stylesheet" href="css/Menu.css">
+		<link rel="stylesheet" href="css/btn.css">
+		<link rel="stylesheet" href="css/Ranking.css">
+		<link rel="icon" href="img/NaveEspecial/Nave0.png">
+	</head>
+	<body onload="getHistoricoNomes();getHistoricoPontos()">
+
+		<div class="tela">
+			<div class="tabela">
+				<h1>Pontuação</h1>
+				<hr>			
+				<div class="scroll">
+
+					<div style="width: 50%;text-align: left;float: left;">
+						<b> Nome </b>
+						<ul id="ListaNome"></ul>
+					</div>
+
+					<div style="width: 50%;text-align: left;float: left;">
+						<b> pontuação </b>
+						<ul id="ListaPontuacao"></ul>
+					</div>
+					
+				</div>
+				<div class="div-voltar">
+					<a href="index.html" class="btn-amarelo"> voltar </a>
+				</div>		
+
+			</div>
+		</div>
+	
+	<script src="js/Pontuacao.js"></script>
+	</body>
+</html>
