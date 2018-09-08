@@ -1,10 +1,11 @@
 // ------------- Função que pega um objeto e retorna um array com a posisao ------------
 function posisao(obj){
-	let objeto = $(obj);
-	
-	let posisaoObj = objeto.offset()
-	let width  = parseFloat(objeto.width() - 20);
-	let height = parseFloat(objeto.height() - 20);
+	let objeto = document.querySelector(obj)
+
+	let posisaoObj  = objeto.posisao() 
+
+	let width  = parseFloat(objeto.width - 20)
+	let height = parseFloat(objeto.height - 20)
 
 	return	[ 		
 				[posisaoObj.left, posisaoObj.left + width],
@@ -24,11 +25,8 @@ function verificaColisao(obj1, obj2) {
 // ------------- Função que verifica se houve a colisao entre meteoro e a nave ------------
 function ColisaoMeteoroNave(id){
 
-  let objNave = document.querySelector("#nave");
-  let ObjMeteoro = document.querySelector("#Meteoro"+id);
-
-  let nave = posisao(objNave);
-  let Meteoro = posisao(ObjMeteoro);
+  let nave = posisao("#nave");
+  let Meteoro = posisao(`#Meteoro${id}`);
 
   let colisaoHorizontal = verificaColisao(Meteoro[0], nave[0]);
   let colisaoVertical = verificaColisao(Meteoro[1], nave[1]);
@@ -47,10 +45,8 @@ function ColisaoMeteoroTiro(IdMeteoro){
 	objTiro.forEach(() => {
 		for (var i = 0; i <= objTiro.length - 1; i++) {
 
-			let ObjMeteoro = document.querySelector("#Meteoro"+IdMeteoro);
-
-			let tiro = posisao(objTiro[i]);
-			let Meteoro = posisao(ObjMeteoro);
+			let tiro = posisao(`#${objTiro[i].attributes.id.textContent}`);//esse codigo todo é só para mandar o id
+			let Meteoro = posisao(`#Meteoro${IdMeteoro}`);
 			
 			let colisaoHorizontal = verificaColisao(Meteoro[0], tiro[0]);
 			let colisaoVertical = verificaColisao(Meteoro[1], tiro[1]);
