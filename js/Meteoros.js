@@ -17,7 +17,7 @@ function gerarMeteoro(idMeteoro,widthTela,heightTela){
 
 	// ------------- Chama a função que faz os Meteoros deserem -------------------
 	let BottomMeteoro = heightTela;
-	let timerMeteoro = setInterval(() => {BottomMeteoro = deserMeteoro(BottomMeteoro,idMeteoro,timerMeteoro,heightTela); },100);
+	let timerMeteoro = setInterval(() => {BottomMeteoro = deserMeteoro(BottomMeteoro,idMeteoro,timerMeteoro,heightTela); },40);
 
 }
 // ------------- Função que Faz o meteoro deserem ------------------
@@ -39,7 +39,7 @@ function rotinaMeteoro(idMeteoro,bottom,timerMeteoro){
 	let meteoro = document.querySelector(`#Meteoro${idMeteoro}`);
 		
 	if( meteoro != null){//Primeiro verifica se o meteoro existe
-		if (LimiteMeteoro(bottom)){
+		if ( limite.limite({min:bottom , max:-70 })){
 				meteoro.style.bottom = bottom + "px";
 			
 			return bottom;			
@@ -50,12 +50,4 @@ function rotinaMeteoro(idMeteoro,bottom,timerMeteoro){
 			return bottom;
 		}	
 	}		
-}
-// ------------- Função que limita até onde os meteoros iram deser ----------------------
-function LimiteMeteoro(bottom){
-	if(bottom >= -70) {
-		return true;
-	}else{
-		return false;
-	}
 }

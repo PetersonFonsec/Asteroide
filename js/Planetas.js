@@ -21,7 +21,7 @@ function gerarPlanetas(idPlaneta,widthTela,heightTela){
 function deserPlanetas(bottomPlanetas,idPlaneta,timerPlanetas,heightTela){
  bottomPlanetas -= 10;
 
-  if ( LimitePlanetas(bottomPlanetas,heightTela) ){
+  if ( limite.limite({min:bottomPlanetas , max:-40 }) ) {
     let Planetas = document.querySelector("#Planetas"+idPlaneta).style.bottom = bottomPlanetas + "px";
     return bottomPlanetas;
 
@@ -31,14 +31,5 @@ function deserPlanetas(bottomPlanetas,idPlaneta,timerPlanetas,heightTela){
     
     bottomPlanetas = heightTela;
     return bottomPlanetas;
-
-  }
-}
-// ------------- Função que limita os Planetas ----------------------
-function LimitePlanetas(bottomPlanetas){
-  if(bottomPlanetas >= -40) {
-    return true;
-  }else{
-    return false;
   }
 }

@@ -1,13 +1,14 @@
 function gerarTiro(c,id,bottom,heightTela){
   let btiro = bottom + 60 ;
   let Tiro  = document.createElement("img");
-      Tiro.src = "img/tiro/Tiro.png";
-      Tiro.classList.add("tiro");
-      Tiro.setAttribute("id" ,"tiro"+id);
-      Tiro.style.left = ( c + 20 ) + "px";
-      Tiro.style.bottom = btiro + "px";
+      Tiro.criar({
+        src    : "img/tiro/Tiro.png",
+        id     : `tiro${id}`,
+        classe : `tiro`,
+        left   : `${( c + 20 )}px`
+      })
 
-  document.getElementById("Nascimento").appendChild(Tiro);
+    Tiro.style.bottom = btiro + "px";
 
   let timer = setInterval(() => {btiro = subirTiro(id,btiro ,timer,heightTela);}, 30);
      
@@ -17,25 +18,17 @@ function gerarTiro(c,id,bottom,heightTela){
 function subirTiro(Id,marginBottom,Interval,heightTela){
   marginBottom += 30;  
 
-  if (limiteTiro(marginBottom,heightTela)){
-    document.querySelector("#tiro"+Id).style.bottom = marginBottom + "px";
+
+  if ( !limite.limite({min:marginBottom , max:heightTela }) ){
+    document.querySelector(`#tiro${Id}`).style.bottom =`${marginBottom}px`;
     return marginBottom;
 
   }else{
-    document.querySelector("#tiro"+Id).remove();
+    document.querySelector(`#tiro${Id}`).remove();
     clearInterval(Interval); 
 
     marginBottom = heightTela;
     return marginBottom;
 
-  }
-}
-
-// ------------- Função que limita até onde o tiro deve ir ------------
-function limiteTiro(top,heightTela){
-  if(top < heightTela){
-    return true;
-  }else{
-    return false;
   }
 }
