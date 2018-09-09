@@ -2,16 +2,18 @@
 function gerarMeteoro(idMeteoro,widthTela,heightTela){
    
   	let borda = widthTela - 100;
-	let meteoro = Math.floor( Math.random()  * borda + 1) ;
+	let largura = Math.floor( Math.random()  * borda + 1) ;
 
-	let estrelas = document.createElement("img");
-      estrelas.src = "img/meteoro/Meteoro1.png";
-      estrelas.setAttribute("id","Meteoro"+idMeteoro);
-      estrelas.classList.add("meteoro");
-      estrelas.style.left = meteoro+"px";
-      estrelas.dataset.colisoes = "0";
+	let Meteoro = document.createElement("img");
+		Meteoro.criar({
+			src    : "img/meteoro/Meteoro1.png",
+			id     : `Meteoro${idMeteoro}`,
+			classe : `meteoro`,
+			left   : `${largura}px`
+		})
 
- 	document.getElementById("Nascimento").appendChild(estrelas); 
+		Meteoro.dataset.colisoes = "0";
+
 
 	// ------------- Chama a função que faz os Meteoros deserem -------------------
 	let BottomMeteoro = heightTela;
@@ -34,7 +36,7 @@ function deserMeteoro(bottom,idMeteoro,timerMeteoro,heightTela){
 }
 // ------------- rotina do meteoro ----------------------
 function rotinaMeteoro(idMeteoro,bottom,timerMeteoro){
-	let meteoro = document.querySelector("#Meteoro"+idMeteoro);
+	let meteoro = document.querySelector(`#Meteoro${idMeteoro}`);
 		
 	if( meteoro != null){//Primeiro verifica se o meteoro existe
 		if (LimiteMeteoro(bottom)){
@@ -42,7 +44,7 @@ function rotinaMeteoro(idMeteoro,bottom,timerMeteoro){
 			
 			return bottom;			
 		}else{
-	    	document.querySelector("#Meteoro"+idMeteoro).remove();
+	    	document.querySelector(`#Meteoro${idMeteoro}`).remove();
 			clearInterval(timerMeteoro);
 			
 			return bottom;

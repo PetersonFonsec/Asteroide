@@ -6,6 +6,11 @@ Object.prototype.posisao = function(){
 
     return posisao
 }
-Object.prototype.criar = function(){
-    
+Object.prototype.criar = function(json){
+    this.src = `${json.src}`;
+    this.setAttribute("id",`${json.id}`);
+    this.classList.add(`${json.classe}`);
+    this.style.left = `${json.left}`; 
+
+ 	document.getElementById("Nascimento").appendChild(this); 
 }

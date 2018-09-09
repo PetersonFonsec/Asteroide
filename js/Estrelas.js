@@ -4,12 +4,12 @@ function nebulosa(idStar,widthTela,heightTela){
   let Left = Math.floor( Math.random() * widthTela + 1) ;
 
   let estrelas = document.createElement("img");
-      estrelas.src = "img/star/star.png";
-      estrelas.setAttribute("id","star"+idStar);
-      estrelas.classList.add("star");
-      estrelas.style.left = Left+"px";
-
-  document.getElementById("Nascimento").appendChild(estrelas); 
+      estrelas.criar({
+        src    : "img/star/star.png",
+        id     : `star${idStar}`,
+        classe : `star`,
+        left   : `${Left}px`
+    })
   
   let bottomStar = heightTela;
   let timerStar = setInterval( () => { bottomStar = deserStar(bottomStar,idStar,timerStar); },20); 
