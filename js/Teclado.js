@@ -14,7 +14,7 @@ function usarTeclado(widthTela,heightTela){
   let TopTiro = bottom + 60;
 
   document.addEventListener('keyup', e => {//se quiser usar as setas use o keyup
-    
+
     if(e.key == 'a' || e.key == 'A'|| e.key == 'ArrowLeft'){
     // ------------- função que faz a nave andar de acordo com o parametro --------------------
       marginLeft = movimentaHorizontalmenteNave('esquerda',marginLeft,widthTela);
@@ -31,6 +31,8 @@ function usarTeclado(widthTela,heightTela){
 
       bottom = movimentaVerticalmenteNave('baixo',bottom,heightTela);
 
+    }else if (e.key == 'Enter'){
+      alert('Finge que isso é um pause desente (eu ainda vou fazer)')
     }else if (e.key == ' '){
     // ------------- função que faz a nave atirar --------------------
       IdTiro++;
