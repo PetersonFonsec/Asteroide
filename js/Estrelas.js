@@ -15,20 +15,22 @@ function nebulosa(idStar,widthTela,heightTela){
   let timerStar = setInterval( () => { bottomStar = deserStar(bottomStar,idStar,timerStar); },20)
 
 }
-// -------------       Função que faz as estrelas deserem      ---------------------------
+// -------------       Função que faz as estrelas decerem      ---------------------------
 function deserStar(bottomStar,idStar,timerStar,heightTela){
-  bottomStar -= 10
+  let config = JSON.parse(sessionStorage.getItem("config"))
+
+  bottomStar -= parseInt(config.dificuldade)
 
   if ( limite.limite({min:bottomStar , max:-10 }) ){
-    let estrelas = document.querySelector(`#star${idStar}`).style.bottom = `${bottomStar}px`;
-    return bottomStar;
+    let estrelas = document.querySelector(`#star${idStar}`).style.bottom = `${bottomStar}px`
+    return bottomStar
 
   }else{
-    let estrelas = document.querySelector(`#star${idStar}`).remove();
-    clearInterval(timerStar);
+    let estrelas = document.querySelector(`#star${idStar}`).remove()
+    clearInterval(timerStar)
     
-    bottomStar = heightTela;
-    return bottomStar;
+    bottomStar = heightTela
+    return bottomStar
 
   }
 }

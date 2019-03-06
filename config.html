@@ -2,26 +2,26 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
-		<title>Asteroid</title>
+		<title>Asteroide</title>
 		<link rel="stylesheet" href="css/Tela.css">
 		<link rel="stylesheet" href="css/Menu.css">
         <link rel="stylesheet" href="css/btn.css">
 		<link rel="icon"	   href="img/NaveEspecial/Nave0.png">
 	</head>
-	<body>
+	<body onload="setCamopConfig()">
 		<div class="tela">
 			<div class="cover">
 				<div class="Menu config">	
             
-                <h1>Configuração</h1>
+                <h1 style="margin: 0px;">Configuração</h1>
                 <hr>			
 
                 <label for="nivelDificuldade">Nivel de Dificuldade</label>
 
                 <select id="nivelDificuldade">
-                    <option value="">fácil  </option>
-                    <option value="">médio  </option>
-                    <option value="">difícil</option>
+                    <option value="10">fácil  </option>
+                    <option value="20">médio  </option>
+                    <option value="30">difícil</option>
                 </select>
 
                 <label for="mobile">Ativar modo Mobile</label>
@@ -30,11 +30,12 @@
                 <label for="mobile">Ativar audio</label>
                 <input type="checkbox" id="audio">
 
-                <a href="index.html" class="btn azul">    Confirmar </a>
-                <a href="index.html" class="btn amarelo"> voltar    </a>
+                <a href="index.html" class="btn azul"  onclick="setConfig()"> Confirmar </a>
+                <a href="index.html" class="btn amarelo"> voltar </a>
             </div>
 		</div>
 	
 	<script src="js/Pontuacao.js"></script>
+    <script src="js/Config.js"></script>
 	</body>
 </html>

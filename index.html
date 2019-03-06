@@ -2,14 +2,15 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
-		<title>Asteroid</title>
+		<title>Asteroide</title>
+		<link rel="manifest"   href="app.manifest">
 		<link rel="stylesheet" href="css/Tela.css">
 		<link rel="stylesheet" href="css/Menu.css">
 		<link rel="stylesheet" href="css/btn.css">
 		<link rel="stylesheet" href="css/Ranking.css">
 		<link rel="icon" href="img/NaveEspecial/Nave0.png">
 	</head>
-	<body>
+	<body onload="setConfigPadrao()">
 
 		<div class="tela">
 			<div class="cover" id="Menu">
@@ -20,11 +21,12 @@
 					<a href="Pontuacao.html"  class="btn vermelho">  Recorde      </a>
 					<a href="creditos.html"   class="btn amarelo">   Creditos	  </a>
 					<a href="config.html"	  class="btn azul">      Configuração </a>
+					
 				</div>
 			</div>
 		</div>
 		
+		<script src="js/Config.js"></script>
 		<script src="js/Pontuacao.js"></script>
-		<script src="js/paginacao.js"></script>
 	</body>
 </html>

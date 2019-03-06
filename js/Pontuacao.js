@@ -9,7 +9,7 @@ function acresentarPontuacao(){
 // ------------- Função usada para quardar os pontos no LocalStorage -------------
 function setHistoricoPontos(pontuacao){
 
-	var registros  =  [];
+	let registros  =  [];
 
 	if(localStorage.getItem("pontos") != null){
 
@@ -23,10 +23,10 @@ function setHistoricoPontos(pontuacao){
 }  
 // ------------- Função usada para pegar os Pontos no LocalStorage -------------
 function getHistoricoPontos(){
-	let registros = JSON.parse(localStorage.getItem("pontos"));
+	let registros = JSON.parse(localStorage.getItem("pontos")) || [];
 	let i = 0;
 
-	registros.forEach((pontos) => {
+	registros.forEach( pontos => {
 		let item = document.createElement("li");
 		item.setAttribute("id","item"+i);
 		item.textContent = pontos;
@@ -37,32 +37,54 @@ function getHistoricoPontos(){
 }  
 // ------------- Função usada para quardar os nomes no LocalStorage -------------
 function setHistoricoNomes(){
-	var nome = document.querySelector("#Nome").value;
-	var registros  =  [];
+	let campo = document.querySelector("#Nome");
+	let nome = campo.value;
+	let registros  =  [];
 
-	if(localStorage.getItem("nomes") != null){
+	if(validaNome(campo)){
+			
+		if(localStorage.getItem("nomes") !== null){
 
-		registros = JSON.parse(localStorage.getItem("nomes"));
+			registros = JSON.parse(localStorage.getItem("nomes"));
 
+		}
+
+		registros.push(nome);
+		localStorage.setItem("nomes", JSON.stringify(registros));
+
+		window.location.replace("Pontuacao.html");
+	}else{
+		campo.style.borderColor = "red";
+		campo.style.color = "red";
+		campo.value = "Campo Obrigatório";
 	}
-
-	registros.push(nome);
-	localStorage.setItem("nomes", JSON.stringify(registros));
-
-	window.location.replace("Pontuacao.html");
+}
+function validaNome(campo){
+	return campo.value ? true : false;
 }  
 // ------------- Função usada para pegar os nomes no LocalStorage -------------
 function getHistoricoNomes(){
 	let registros = JSON.parse(localStorage.getItem("nomes"));
 	let i = 0;
 
-	registros.forEach((nomes) => {
+	//A negação dupla é para forçar a coerção de tipo para um tipo boolean 
+	if(!!registros){
 
-		let item = document.createElement("li");
-			item.setAttribute("id","item"+i);
-			item.textContent = nomes;
+		registros.forEach(nomes => {
 
-		document.getElementById("ListaNome").appendChild(item);
-		i++;
-	});
-}  
+			let item = document.createElement("li");
+				item.setAttribute("id","item"+i);
+				item.textContent = nomes;
+
+			document.getElementById("ListaNome").appendChild(item);
+
+			i++;
+
+		});
+	
+	}
+} 
+function getHistorico(){
+	getHistoricoNomes();
+	getHistoricoPontos();
+} 

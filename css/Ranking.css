@@ -1,6 +1,4 @@
 .tabela{
-	width: 500px;
-	height: 400px;
 	background-color: #fff;
 	border-radius: 5px;
 	padding: 20px 20px 20px 30px;
@@ -10,7 +8,6 @@
 .scroll{
 	overflow-y: auto;
 	height: 200px;
-
 }
 .div-voltar{
 	position: relative;

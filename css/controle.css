@@ -1,0 +1,37 @@
+#controle{
+    display:block;
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+}
+.btn-atirar{
+    display: inline-block;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0px 0px 20px 0px;
+}
+.btn-esquerda::before{
+    content: "";
+    display: inline-block;
+    margin-right: 10px;
+    width: 0; 
+    height: 0; 
+  
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent; 
+    border-right: 45px solid #23BA50;
+}
+.btn-direita::before{
+    content: "";
+    display: inline-block;
+    margin-left: 10px;
+    width: 0; 
+    height: 0; 
+
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent; 
+    border-left: 45px solid #23BA50;
+}

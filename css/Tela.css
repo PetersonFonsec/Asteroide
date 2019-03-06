@@ -15,18 +15,10 @@ html,body{
 	overflow: hidden;	
 	position: relative; 
 }
-@media (max-width: 767.98px) {
-	.tela {
-		margin: 0;
-		width: 100%;
-		background: black;
-		border: none;
-		box-shadow: none;
-	}
-}
 @media (max-width: 991.98px) {
 	.tela {
 		margin: 0;
+		height: 80%;
 		width: 100%;
 		background: black;
 		border: none;

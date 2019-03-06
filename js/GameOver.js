@@ -18,7 +18,7 @@ function gameOver(){
 			},500);			
 		}
 
-		nave.setAttribute("src","img/naveEspecial/NaveDestruida"+estado+".png");
+		nave.setAttribute("src",`img/naveEspecial/NaveDestruida${estado}.png`);
 		return estado;
 	},300);
 }
