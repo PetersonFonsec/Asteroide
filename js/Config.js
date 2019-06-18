@@ -1,28 +1,31 @@
-function setConfig(){
-	let dificuldade = document.querySelector("#nivelDificuldade").value
-	let mobile      = document.querySelector("#mobile").checked
-	let audio       = document.querySelector("#audio").checked
+const dificuldade = () => pegarElemento( "#nivelDificuldade" ).value
+const mobile = () => pegarElemento( "#mobile" ).checked
+const audio  = () => pegarElemento( "#audio" ).checked
 
+const chave = "config"
+
+const setConfig = () => {
 	let config = {}
 
-	config.dificuldade = dificuldade
-	config.mobile = mobile
-	config.audio  = audio
+	config.dificuldade = dificuldade()
+	config.mobile = mobile()
+	config.audio  = audio()
 
-	sessionStorage.setItem("config" , JSON.stringify(config) )
+	colocarDadoLocal( chave , JSON.stringify( config ) )
 }
-function setCamopConfig(){
-	let config = JSON.parse(sessionStorage.getItem('config'))
 
-	if(config){
-		
-		document.querySelector("#nivelDificuldade").value = config.dificuldade
-		document.querySelector("#mobile").checked = config.mobile
-		document.querySelector("#audio").checked  = config.audio
+const carregaConfig = () => {
+	let config =  JSON.parse( pegarDadoLocal( chave ) ) 
+
+	if( config ){
+		pegarElemento( "#nivelDificuldade" ).value = config.dificuldade
+		pegarElemento( "#mobile" ).checked = config.mobile
+		pegarElemento( "#audio" ).checked  = config.audio
 	}
 }
-function setConfigPadrao(){
-	if(!sessionStorage.getItem('config')){
+
+const setConfigPadrao = () => {
+	if( !pegarDadoLocal( chave ) ){
 		
 		let config = {}
 
@@ -30,6 +33,6 @@ function setConfigPadrao(){
 		config.mobile 	   = false
 		config.audio  	   = false
 
-		sessionStorage.setItem("config" , JSON.stringify(config) )	
+		colocarDadoLocal( chave , JSON.stringify( config ) )	
 	}	
 }

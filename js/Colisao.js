@@ -1,46 +1,45 @@
-// ------------- Função que pega um objeto e retorna um array com a posisao ------------
-function posisao(obj){
-	let objeto = document.querySelector(obj)
+const posisao =  obj => {
+	let objeto = pegarElemento( obj )
 
-	let posisaoObj  = objeto.posisao() 
+	if( !objeto ) return false
 
-	let width  = parseFloat(objeto.width - 20)
-	let height = parseFloat(objeto.height - 20)
+	let posisao  = objeto.posisao() 
+
+	let width  = parseFloat( objeto.width - 20 )
+	let height = parseFloat( objeto.height - 20 )
 
 	return	[ 		
-				[posisaoObj.left, posisaoObj.left + width],
-				[posisaoObj.top,posisaoObj.top + height]		
-			];	
-}
-// ------------- Função que verifica se houve a colisao entre meteoro e a nave ------------
-function ColisaoMeteoroNave(id){
-
-  let nave = posisao("#nave")
-  let Meteoro = posisao(`#Meteoro${id}`)
-  let colisao = 0
-			
-  if (colisao.colisao(nave[1],Meteoro[1]) && colisao.colisao(nave[0],Meteoro[0])) {
-  	gameOver()
-  }
-
+				[ posisao.left, posisao.left + width ],
+				[ posisao.top, posisao.top + height ]		
+			]	
 }
 
-// ------------- Função que verifica se o meteoro foi acertado por um tiro ------------
-function ColisaoMeteoroTiro(IdMeteoro){
-	let objTiro = document.querySelectorAll(".tiro")
+const quandoColidir = ( el1 , el2, callBack, ...params ) => {
+  	const colisao = 0
+
+	let colisaoVertical   = colisao.colisao( el1[1], el2[1] )
+	let colisaoHorizontal = colisao.colisao( el1[0], el2[0] )
+
+	if ( colisaoHorizontal && colisaoVertical ) callBack( ...params )
+}
+
+const ColisaoMeteoroNave = id => {
+  const nave = posisao( "#nave" )
+  const Meteoro = posisao( `#${ id }` )
+  
+  if( Meteoro ) quandoColidir( nave, Meteoro, gameOver )  
+}
+
+const ColisaoMeteoroTiro = IdMeteoro => {
+	let tiros = pegarTodosElementos( ".tiro" )
 	
-	objTiro.forEach(() => {
-		for (var i = 0; i <= objTiro.length - 1; i++) {
+	tiros.forEach( tiro => {
+		for ( var i = 0; i <= tiros.length - 1; i++ ) {
 
-			let tiro = posisao(`#${objTiro[i].attributes.id.textContent}`)//esse codigo todo é só para mandar o id
-			let Meteoro = posisao(`#Meteoro${IdMeteoro}`)
+			let Tiro = posisao( `#${ tiro.attributes.id.textContent }` )
+			let Meteoro = posisao( `#${ IdMeteoro }` )
 			
-			let colisao = 0
-			
-			if (colisao.colisao(tiro[1],Meteoro[1]) && colisao.colisao(tiro[0],Meteoro[0])) {
-				morteMeteoro(IdMeteoro)
-			} 
+			if( Meteoro ) quandoColidir( Tiro, Meteoro, morteMeteoro, IdMeteoro )
 		}
-
 	})	
 }

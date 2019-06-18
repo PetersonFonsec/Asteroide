@@ -1,33 +1,37 @@
-function usarTeclado(widthTela,heightTela){
-    
-  let marginLeft =  parseInt( (widthTela / 2) );
-  let bottom =  parseInt(( heightTela / 100) * 20);
-  let IdTiro = 0;
+const usarTeclado = () => {
+  let esquerda = parseInt( widthTela / 2 )
+  let baixo = parseInt( ( heightTela / 100 ) * 20 )
+  let IdTiro = 0
 
-  document.addEventListener('keydown', e => {//se quiser usar as setas use o keyup  
-    if(e.key == 'a' || e.key == 'A'|| e.key == 'ArrowLeft'){
-      // ------------- função que faz a nave andar de acordo com o parametro --------------------
-      marginLeft = movimentaHorizontalmenteNave('esquerda',marginLeft,widthTela)
+  const escutarTeclas =  event => {
+    const tecla = event.key.toUpperCase()
 
-    }else if (e.key == 'd' || e.key == 'D'|| e.key == 'ArrowRight'){
+    const left   = pixels => movimentaHorizontalmenteNave( 'esquerda', pixels )
+    const right  = pixels => movimentaHorizontalmenteNave( 'direita', pixels )
+    const up     = pixels => movimentaVerticalmenteNave( 'cima', pixels )
+    const bottom = pixels => movimentaVerticalmenteNave( 'baixo', pixels )
 
-      marginLeft = movimentaHorizontalmenteNave('direita',marginLeft,widthTela)
+    if( tecla == 'A'|| tecla == 'ARROWLEFT' ){
+      esquerda = left( esquerda )
 
-    }else if (e.key == 'w' || e.key == 'W'|| e.key == 'ArrowUp'){
+    }else if ( tecla == 'D'|| tecla == 'ARROWRIGHT' ){
+      esquerda = right( esquerda )
 
-      bottom = movimentaVerticalmenteNave('cima',bottom,heightTela)
+    }else if ( tecla == 'W'|| tecla == 'ARROWUP' ){
+      baixo = up( baixo )
 
-    }else if (e.key == 's' || e.key == 'S'|| e.key == 'ArrowDown'){
+    }else if ( tecla == 'S'|| tecla == 'ARROWDOWN' ){
+      baixo = bottom( baixo )
 
-      bottom = movimentaVerticalmenteNave('baixo',bottom,heightTela)
+    }else if ( tecla == 'ENTER' ){
+      alert( 'Finge que isso é um pause decente (eu ainda vou fazer)' )
 
-    }else if (e.key == 'Enter'){
-      alert('Finge que isso é um pause decente (eu ainda vou fazer)')
-
-    }else if (e.key == ' '){
-      // ------------- função que faz a nave atirar --------------------
+    }else if ( tecla == ' ' ){
       IdTiro++
-      gerarTiro(marginLeft,IdTiro,bottom,heightTela)      
+      gerarTiro( esquerda, IdTiro, baixo )      
     }
-  })
+  }
+
+  document.addEventListener( 'keydown', escutarTeclas )
 }
+

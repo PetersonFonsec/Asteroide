@@ -1,56 +1,65 @@
-// ------------- Função que cria Meteoros com posisões aleatorias -----------------
-function gerarMeteoro(idMeteoro,widthTela,heightTela){
-   
-  	let borda = widthTela - 100;
-	let largura = Math.floor( Math.random()  * borda + 1) 
+const gerarMeteoro = idMeteoro => {
+	const tamanhoImg = 100
+  	const borda = widthTela - tamanhoImg
+  	const margin = 1
+	const largura = Math.floor( ( Math.random()  * borda ) + margin ) 
 
-	let Meteoro = document.createElement("img")
-		Meteoro.criar({
-			src    : "img/meteoro/Meteoro1.png",
-			id     : `Meteoro${idMeteoro}`,
-			classe : `meteoro`,
-			left   : `${largura}px`
-		})
-
-		Meteoro.dataset.colisoes = "0";
-
-
-	// ------------- Chama a função que faz os Meteoros deserem -------------------
-	let BottomMeteoro = heightTela;
-	let timerMeteoro = setInterval(() => {BottomMeteoro = deserMeteoro(BottomMeteoro,idMeteoro,timerMeteoro,heightTela) },40)
-
-}
-// ------------- Função que Faz o meteoro deserem ------------------
-function deserMeteoro(bottom,idMeteoro,timerMeteoro,heightTela){
-	let config = JSON.parse(sessionStorage.getItem("config"))
-
-	bottom -= parseInt(config.dificuldade)
+	const src = "img/meteoro/Meteoro1.png"
+	const id  = `Meteoro${ idMeteoro }`
+	const classe = `meteoro`
+	const left = `${ largura }px`
 	
-	try{//Gambiarra que eu fiz para verificar se o meteoro foi atingido		
-		ColisaoMeteoroNave(idMeteoro)
-		ColisaoMeteoroTiro(idMeteoro)
-		bottom = rotinaMeteoro(idMeteoro,bottom,timerMeteoro,heightTela)
-		return bottom
-		
-	}catch (e){
-		bottom = rotinaMeteoro(idMeteoro,bottom,timerMeteoro,heightTela)
-		return bottom;
-	}	
+	criar( { src, id, classe, left } ).dataset.colisoes = 0
+
+	let posisaoMeteoro = heightTela
+	let timer = setInterval( () => posisaoMeteoro = rotinaMeteoro( posisaoMeteoro, id, timer ), 40)
 }
-// ------------- rotina do meteoro ----------------------
-function rotinaMeteoro(idMeteoro,bottom,timerMeteoro){
-	let meteoro = document.querySelector(`#Meteoro${idMeteoro}`)
+
+const rotinaMeteoro = ( posisaoAtual, id, timer ) => {
+	posisaoAtual -= parseInt( config.dificuldade )
+	
+	ColisaoMeteoroNave( id )
+	ColisaoMeteoroTiro( id )
+	
+	return  moverMeteoro( id, posisaoAtual, timer )
+}
+
+const moverMeteoro = ( id, pixels, timer ) => {
+	const seletor = `#${ id }`
+	let meteoro = pegarElemento( seletor )
 		
-	if( meteoro != null){//Primeiro verifica se o meteoro existe
-		if ( limite.limite({min:bottom , max:-70 })){
-				meteoro.style.bottom = bottom + "px"
+	if( meteoro ){
+		limite( pixels , -70 ) 
+			? moverVertical( seletor, `${ pixels }px` )
+			: removerElemento( seletor, timer )
+	}	
+
+	return pixels		
+}
+
+const morteMeteoro = IdMeteoro => {
+	const seletor = `#${ IdMeteoro }`
+
+	let meteoro  = pegarElemento( seletor )
+
+	if( meteoro ) {
+
+		let colisoes = meteoro.dataset.colisoes
+
+		colisoes++;
+
+		if ( colisoes >= 10){
+			trocarImg( seletor, "img/meteoro/Meteoro3.png" )
 			
-			return bottom;			
-		}else{
-	    	document.querySelector(`#Meteoro${idMeteoro}`).remove()
-			clearInterval(timerMeteoro)
-			
-			return bottom
-		}	
-	}		
+			let timeOut = setTimeout(  () => {
+				acresentarPontuacao()
+				removerElemento( seletor, timeOut )
+			}, 500);
+
+		}else if( colisoes > 0 ){
+			trocarImg( seletor, "img/meteoro/Meteoro2.png" )
+		}
+
+		meteoro.dataset.colisoes = colisoes	
+	}
 }

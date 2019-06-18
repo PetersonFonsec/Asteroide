@@ -1,24 +1,22 @@
-// ----- Função redireciona o jogador para o menu de pontuação quando a nave é acertada --------------
-function gameOver(){
-	let nave = document.querySelector("#nave");
-	let estado = 0;
-	
+const gameOver = () => {
+	const seletor = "#nave"
+	const nave = pegarElemento( seletor )
+	let estado = 0	
 
-	let animacaoExplosao = setInterval( () => {
-		estado++;
+	const explosao = setInterval( () => {
+		estado++
 		
-		if(estado >= 5){
-			clearInterval(animacaoExplosao);
+		if( estado >= 5 ){
+			clearInterval( explosao )
 
 			setTimeout(()=>{
-				let pontuacao = document.querySelector("#contadorMeteoro");
-				let pontos = pontuacao.innerHTML;
-				setHistoricoPontos(pontos);
+				const pontos = pegarElemento( "#contadorMeteoro" ).innerHTML
+				setHistoricoPontos( pontos )
 
 			},500);			
 		}
 
-		nave.setAttribute("src",`img/naveEspecial/NaveDestruida${estado}.png`);
-		return estado;
-	},300);
+		trocarImg( seletor , `img/naveEspecial/NaveDestruida${ estado }.png`)
+		return estado
+	},300)
 }

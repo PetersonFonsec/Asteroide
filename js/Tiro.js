@@ -1,54 +1,25 @@
-function gerarTiro(posisaoNave,id,bottom,heightTela){
-  let btiro = bottom + 60 ;
-  let Tiro  = document.createElement("img");
-      Tiro.criar({
-        src    : "img/tiro/Tiro.png",
-        id     : `tiro${id}`,
-        classe : `tiro`,
-        left   : `${( posisaoNave + 20 )}px`
-      })
+const gerarTiro = ( posisaoNave, Id, pixels ) => {
+  const tamanhoImg = 60
+  
+  let posisaoTiro = pixels + tamanhoImg
 
-  Tiro.style.bottom = btiro + "px";
-  let mobile = JSON.parse(sessionStorage.getItem(`config`)).mobile
+  const src = "img/tiro/Tiro.png"
+  const id  = `tiro${ Id }`
+  const classe = `tiro`
+  const left = `${ posisaoNave + 20 }px`
+  
+  criar( { src, id, classe, left } ).style.bottom = posisaoTiro + "px";
 
-  let timer = setInterval(() => {
-    btiro = mobile ? subirTiroMobile(id,btiro ,timer,heightTela):subirTiro(id,btiro ,timer,heightTela);
-  }, 30);     
+  let timer = setInterval( () => posisaoTiro = moverTiro( id, posisaoTiro, timer ) , 30 )
 }
 
-// ------------- Função que Faz o tiro subir --------------------
-function subirTiro(Id,marginBottom,Interval,heightTela){
-  marginBottom += 30;  
+const moverTiro = ( Id, posisaoAtualTiro, Interval ) => {
+  
+  posisaoAtualTiro += 30 
 
+  !limite( posisaoAtualTiro, heightTela ) 
+    ? moverVertical( `#${ Id }`, `${ posisaoAtualTiro }px` )
+    : removerElemento( `#${Id}`, Interval ) 
 
-  if ( !limite.limite({min:marginBottom , max:heightTela }) ){
-
-    document.querySelector(`#tiro${Id}`).style.bottom = `${marginBottom}px`;
-    return marginBottom;
-
-  }else{
-    document.querySelector(`#tiro${Id}`).remove();
-    clearInterval(Interval); 
-
-    marginBottom = heightTela;
-    return marginBottom;
-
-  }
-}
-function subirTiroMobile(Id,marginBottom,Interval,heightTela){
-  marginBottom -= 30;  
-
-  if ( !limite.limite({min:marginBottom , max:heightTela }) ){
-
-      document.querySelector(`#tiro${Id}`).style.top = `${marginBottom}px`;
-      
-      return marginBottom;
-
-  }else{
-    document.querySelector(`#tiro${Id}`).remove();
-    clearInterval(Interval); 
-
-    marginBottom = heightTela;
-    return marginBottom;
-  }
+  return posisaoAtualTiro;
 }

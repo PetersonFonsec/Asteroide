@@ -1,14 +1,10 @@
 @keyframes subirCreditos{
-	from{
-		top:0%;
-	}
-	to{
-		top:-500%;
-	}
+	from{ transform: translateY( 0% ) }
+	to  { transform: translateY( -90% ) }
 }
 .creditos{
+	animation: infinite subirCreditos 30s linear;
 	text-align: center;
-	animation: infinite subirCreditos 30s;
 	position: relative;
 	color: #fff;
 }
@@ -16,8 +12,5 @@
 	font-size: 70px;
 }
 .creditos p{
-	animation: subirCreditos 20s;
-	margin:100px 0px;
-	position: relative;
 	font-size: 30px;
 }
