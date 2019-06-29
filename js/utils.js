@@ -9,6 +9,12 @@ const colocarDadoLocal = ( chave, valor ) => sessionStorage.setItem( chave , val
 const alterarCss = ( seletor, prop, valor ) => 
   	pegarElemento( seletor ).style[prop] = valor
 
+const removerClass = ( seletor, classe ) => 
+    pegarElemento( seletor ).classList.remove( classe )
+
+const addClass = ( seletor, classe ) => 
+    pegarElemento( seletor ).classList.add( classe )
+
 const alterarProp = ( seletor, prop, valor ) => 
     pegarElemento( seletor ).setAttribute( prop, valor )
 

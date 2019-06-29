@@ -3,9 +3,18 @@ const widthTela  = Tela.clientWidth
 const heightTela = Tela.clientHeight
 const config =  JSON.parse( sessionStorage.getItem( "config" ) ) 
 
+let pause = false
+
 const Game_init = () =>{
-  const init = ( i, callback, time, ...params ) =>
-  	setInterval( () => i++ && callback(i, ...params ) , time )
+  const init = ( i, callback, time, ...params ) => {
+  	
+  	setInterval( () => { 
+
+  		if( !pause ) i++ && callback( i, ...params ) 
+
+  	}, time )
+
+  }  	
 
   config.mobile ? usarBotoes() : usarTeclado()
   

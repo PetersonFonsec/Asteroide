@@ -12,7 +12,13 @@ const gerarMeteoro = idMeteoro => {
 	criar( { src, id, classe, left } ).dataset.colisoes = 0
 
 	let posisaoMeteoro = heightTela
-	let timer = setInterval( () => posisaoMeteoro = rotinaMeteoro( posisaoMeteoro, id, timer ), 40)
+
+	let timer = setInterval( () => { 
+
+		if( !pause ) 
+			posisaoMeteoro = rotinaMeteoro( posisaoMeteoro, id, timer )
+		
+	}, 40)
 }
 
 const rotinaMeteoro = ( posisaoAtual, id, timer ) => {

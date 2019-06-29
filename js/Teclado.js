@@ -11,24 +11,27 @@ const usarTeclado = () => {
     const up     = pixels => movimentaVerticalmenteNave( 'cima', pixels )
     const bottom = pixels => movimentaVerticalmenteNave( 'baixo', pixels )
 
-    if( tecla == 'A'|| tecla == 'ARROWLEFT' ){
-      esquerda = left( esquerda )
+    if( tecla === 'A'|| tecla === 'ARROWLEFT' ){
+      if( !pause ) esquerda = left( esquerda )
 
-    }else if ( tecla == 'D'|| tecla == 'ARROWRIGHT' ){
-      esquerda = right( esquerda )
+    }else if ( tecla === 'D'|| tecla === 'ARROWRIGHT' ){
+      if( !pause ) esquerda = right( esquerda )
 
-    }else if ( tecla == 'W'|| tecla == 'ARROWUP' ){
-      baixo = up( baixo )
+    }else if ( tecla === 'W'|| tecla === 'ARROWUP' ){
+      if( !pause ) baixo = up( baixo )
 
-    }else if ( tecla == 'S'|| tecla == 'ARROWDOWN' ){
-      baixo = bottom( baixo )
+    }else if ( tecla === 'S'|| tecla === 'ARROWDOWN' ){
+      if( !pause ) baixo = bottom( baixo )
 
-    }else if ( tecla == 'ENTER' ){
-      alert( 'Finge que isso é um pause decente (eu ainda vou fazer)' )
+    }else if ( tecla === 'ENTER' ){
+      pause = !pause
+      togglePause( pause )
 
-    }else if ( tecla == ' ' ){
-      IdTiro++
-      gerarTiro( esquerda, IdTiro, baixo )      
+    }else if ( tecla === ' ' ){
+      if( !pause ) {
+        IdTiro++
+        gerarTiro( esquerda, IdTiro, baixo )              
+      }
     }
   }
 
