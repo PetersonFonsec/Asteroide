@@ -1,6 +1,4 @@
 const gameOver = () => {
-	const seletor = "#nave"
-	const nave = pegarElemento( seletor )
 	let estado = 0	
 
 	const explosao = setInterval( () => {
@@ -16,7 +14,8 @@ const gameOver = () => {
 			},500);			
 		}
 
-		trocarImg( seletor , `img/naveEspecial/NaveDestruida${ estado }.png`)
+		trocarImg( "#nave", `img/naveEspecial/NaveDestruida${ estado }.png`)
+
 		return estado
-	},300)
+	}, 300)
 }

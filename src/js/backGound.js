@@ -6,7 +6,7 @@ const nebulosa = idStar => {
   const classe = `star`
   const left = `${Left}px`
 
-  cicloVidaBackGound( src, id, classe, left )
+  cicloVida( src, id, classe, left )
 }
 
 const gerarPlanetas = idPlaneta => {
@@ -20,5 +20,5 @@ const gerarPlanetas = idPlaneta => {
   const classe = "Planetas"
   const left = `${Left}px`
 
-  cicloVidaBackGound( src, id, classe, left )
+  cicloVida( src, id, classe, left )
 }

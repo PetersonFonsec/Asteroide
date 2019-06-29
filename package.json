@@ -1,0 +1,30 @@
+{
+  "name": "Asteroide",
+  "version": "1.0.0",
+  "description": "O Asteroid é o meu primeiro projeto de jogo que fiz sozinho, um jogo bem simples feito em javascript que foi inspirado no Space Invaders.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetersonFonsec/Asteroide.git"
+  },
+  "keywords": [],
+  "author": "Peterson Fonseca Simiao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PetersonFonsec/Asteroide/issues"
+  },
+  "homepage": "https://github.com/PetersonFonsec/Asteroide#readme",
+  "dependencies": {
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.6.1",
+    "gulp": "3.9.1",
+    "gulp-babel": "7.0.1",
+    "gulp-concat": "2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-uglifycss": "1.0.9"
+  }
+}

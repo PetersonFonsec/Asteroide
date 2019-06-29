@@ -1,4 +1,4 @@
-const cicloVidaBackGound = ( src, id, classe, left, interval= 20 ) => {
+const cicloVida = ( src, id, classe, left, interval= 20 ) => {
 	const el = criar( { src, id, classe, left } )
 
 	let posisao = heightTela
@@ -17,7 +17,7 @@ const limitarElemento = ( posisaoAtual, id, timer ) => {
 	
 	posisaoAtual -= parseInt( config.dificuldade )
 
-	limite(posisaoAtual , -10 ) 
+	limite( posisaoAtual , -10 ) 
 		? moverVertical( `#${ id }`, `${ posisaoAtual }px` ) 
 		: removerElemento( `#${ id }`, timer )
 	
