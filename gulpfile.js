@@ -16,7 +16,7 @@ gulp.task( tarefas[ 0 ], () => {
                    comments : false,
                    presets  : [ 'env' ]
                }) )
-               .pipe( concat( 'Principal.min.js' ) )
+               .pipe( concat( 'principal.min.js' ) )
                .pipe( gulp.dest( pastaFinal ) )
                .on( 'error', err => console.log( err ) )
 })
